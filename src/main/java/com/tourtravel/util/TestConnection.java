@@ -1,0 +1,17 @@
+package com.tourtravel.util;
+
+import java.sql.Connection;
+
+public class TestConnection {
+
+    public static void main(String[] args) {
+
+        Connection connection = DBConnection.getConnection();
+
+        if (connection != null) {
+            System.out.println("SUCCESS: MySQL Database Connected!");
+        } else {
+            System.out.println("FAILED: Database Connection Failed!");
+        }
+    }
+}
