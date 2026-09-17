@@ -6,11 +6,13 @@ import java.sql.DriverManager;
 public class DBConnection {
 
     private static final String URL =
-            "jdbc:mysql://localhost:3306/tour_travel_db";
+            System.getenv("DB_URL");
 
-    private static final String USER = "root";
+    private static final String USER =
+            System.getenv("DB_USER");
 
-   private static final String PASSWORD = "";
+    private static final String PASSWORD =
+            System.getenv("DB_PASSWORD");
 
     public static Connection getConnection() {
 
@@ -25,9 +27,12 @@ public class DBConnection {
                     PASSWORD
             );
 
-            System.out.println("Database connected successfully!");
+            System.out.println(
+                    "Database connected successfully!"
+            );
 
         } catch (Exception e) {
+
             e.printStackTrace();
         }
 
