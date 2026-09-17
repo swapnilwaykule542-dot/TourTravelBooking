@@ -5,7 +5,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Login - Tour Travel Booking</title>
+    <title>Sign In - Tour Travel Booking</title>
 
     <style>
         body {
@@ -51,6 +51,26 @@
             color: red;
             text-align: center;
         }
+
+        .success {
+            color: green;
+            text-align: center;
+        }
+
+        .register-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .register-link a {
+            color: #333;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .register-link a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 
@@ -58,18 +78,35 @@
 
 <div class="container">
 
-    <h2>Login</h2>
+    <h2>Sign In</h2>
 
-    <% 
+    <%
         String error = request.getParameter("error");
+        String registered = request.getParameter("registered");
 
-        if ("invalid".equals(error)) {
+        if ("success".equals(registered)) {
     %>
-        <p class="error">Invalid email or password!</p>
+
+        <p class="success">
+            Account created successfully! Please sign in.
+        </p>
+
+    <%
+        } else if ("invalid".equals(error)) {
+    %>
+
+        <p class="error">
+            Invalid email or password!
+        </p>
+
     <%
         } else if ("failed".equals(error)) {
     %>
-        <p class="error">Something went wrong. Please try again.</p>
+
+        <p class="error">
+            Something went wrong. Please try again.
+        </p>
+
     <%
         }
     %>
@@ -86,9 +123,16 @@
                placeholder="Password"
                required>
 
-        <button type="submit">Login</button>
+        <button type="submit">
+            Sign In
+        </button>
 
     </form>
+
+    <div class="register-link">
+        Don't have an account?
+        <a href="register.jsp">Create Account</a>
+    </div>
 
 </div>
 
